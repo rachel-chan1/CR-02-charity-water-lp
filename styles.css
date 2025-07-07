@@ -33,7 +33,7 @@ body {
 }
 
 
-/* Hero Section Styles */
+/* Top Bar Section Styles */
 .top-bar {
   display: flex;
   background: #fff7e1;
@@ -43,9 +43,10 @@ body {
 }
 
 
-/* Story Section Styles */
-.impact-story {
+/* Cover Section Styles */
+.cover {
   background-image: url("img/4891_Ethiopia_2019_CG-.jpg");
+  background-repeat: no-repeat; /* Do not repeat the image */
   background-position: center -100px;
   color: #222;
   text-align: start;
@@ -53,9 +54,13 @@ body {
   margin: 30px;
 }
 
-/* Add accent color to section headings */
+/* Hide image by default */
+.show-on-small {
+  display: none;
+}
+
 h1 {
-  color: #fff; /* Primary blue */
+  color: #fff; 
   margin-top: 0;
   font-weight: bold;
   text-align: start;
@@ -63,33 +68,17 @@ h1 {
 }
 
 p {
-  color: #fff; /* Primary blue */
+  color: #fff; 
   margin-top: 5;
   text-align: start;
   line-height: 1.8;
-}
-
-/* Call-to-Action Section Styles */
-.call-to-action {
-  background-color: #FFC907; /* Primary Yellow */
-  color: #222;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-/* Style the impact story image */
-.impact-image {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 10px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.10);
+  width: 30%;
 }
 
 /* Donate Button Styles */
 .donate-button {
   display: inline-block;
-  background-color: #ffc907; /* Green */
+  background-color: #ffc907; /* Yellow */
   color: #1a1a1a;
   padding: 14px 50px;
   text-decoration: none;
@@ -105,7 +94,7 @@ p {
 
 /* Change button color when hovered */
 .donate-button:hover {
-  background-color: #efd89b; /* Dark Green */
+  background-color: #efd89b; /* Light yellow */
   transform: translateY(-2px) scale(1.04); /* Slight lift */
 }
 
@@ -117,26 +106,24 @@ p {
   margin-left: 8px;         /* Space between text and image */
 }
 
-/* Donate Button Styles */
+/* Donate Button Styles -- used in top bar */
 .donate-button2 {
   display: inline-block;
-  background-color: #77a8bb; /* Green */
+  background-color: #77a8bb; /* Light blue */
   color: #fff;
   padding: 14px 40px;
   text-decoration: none;
   border-radius: 6px;
   font-size: 1.1em;
-  margin-top: 18px;
   box-shadow: 0 2px 8px rgba(79, 203, 83, 0.10);
   transition: background 0.3s, transform 0.2s;
   border: none;
   cursor: pointer;
-  margin-left: 50px;
 }
 
 /* Change button color when hovered */
 .donate-button2:hover {
-  background-color: #174253; /* Dark Green */
+  background-color: #174253; /* Dark blue */
   color: #fff; /* White text for contrast */
   transform: translateY(-2px) scale(1.04); /* Slight lift */
 }
@@ -155,54 +142,52 @@ section {
 /* This media query applies styles when the screen is 600px wide or less (like on most phones) */
 @media (max-width: 600px) {
   /* Make hero section padding smaller on small screens */
-  .hero {
-    padding: 32px 8px;
-    font-size: 1em;
+  .top-bar {
+    padding: 20px 15px;
+    font-size: 0.9em;
   }
 
-  /* Make headline font size smaller so it fits on small screens */
-  .hero h1 {
-    font-size: 1.4em;
+  /* Make cover section have less padding */
+  .cover{
+    padding: 14px 20px;
+    background-color: #174253;
+    background-image: none; /* Remove background image for better performance on small screens */
+    margin: 20px;
   }
 
-  /* Make subheadline font size smaller */
-  .hero p {
-    font-size: 1em;
+  .show-on-small {
+    display: block;
+    width: 100%;      /* Make image responsive */
+    margin: auto;
   }
 
-  /* Make story and call-to-action sections have less padding */
-  .story,
-  .call-to-action,
-  .donation-section {
-    padding: 14px 8px;
+  /* Make the logo image responsive */
+  .logo-container img {
+    width: 50%;       /* Smaller logo for phones */
   }
 
-  /* Make impact story image smaller and stack above the text */
-  .impact-content {
-    display: block; /* Stack items vertically */
+  .donate-button2 {
+    width: 100%;     /* Make button full width on small screens */
+    box-sizing: border-box; /* Include padding in the width */
+    padding: 12px;   /* Smaller padding for smaller screens */
+    font-size: 1em;  /* Adjust font size for readability */
     text-align: center;
   }
 
-  .impact-image {
-    width: 90%;    /* Make image take up most of the width */
-    max-width: 220px;
+  p {
+    width: 100%;     /* Make paragraph take full width */
+    text-align: center; /* Center text for better readability */
   }
+
 }
 
 /* This media query applies styles when the screen is wider than 600px (like on tablets and computers) */
 @media (min-width: 601px) {
-  /* Show image and text side by side in the impact story */
-  .impact-content {
-    display: flex;           /* Place items in a row */
-    align-items: center;     /* Vertically center items */
-    justify-content: center; /* Center the whole group */
-    gap: 28px;               /* Space between image and text */
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .impact-image {
-    width: 300px;
+  /* Make the logo image responsive */
+  .logo-container img {
+    width: 240px;        /* Default size for bigger screens */
+    max-width: 100%;     /* Never get bigger than its container */
+    height: auto;        /* Keep the image shape */
+    display: block;      /* Remove extra space below image */
   }
 }
